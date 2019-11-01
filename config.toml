@@ -1,0 +1,41 @@
+baseURL = "https://zhao-xiaoer.github.io"
+languageCode = "zh-cn"
+title = "古道长亭"
+theme = "m10c"
+paginate = 10
+[menu]
+  [[menu.main]]
+    name                   = "首页"
+    weight                 = 1
+    identifier             = "首页"
+    url                    = "/posts/"
+    title                  = "首页"
+  [[menu.main]]
+    name                   = "技术"
+    weight                 = 2
+    identifier             = "技术"
+    url                    = "/tecs/"
+    title                  = "技术分享"
+  [[menu.main]]
+    name                   = "随笔"
+    weight                 = 3
+    identifier             = "随笔"
+    url                    = "/free/"
+    title                  = "生活随笔"
+  [[menu.main]]
+    name                   = "关于"
+    weight                 = 4
+    identifier             = "关于"
+    url                    = "/about/"
+    title                  = "关于"
+[params]
+  author = "zhaoxr"
+  description = "The road through the summit is always difficult and lonely"
+  avatar = "avatar.jpeg"
+  
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/zhao-xiaoer"
+  [[params.social]]
+    name = "csdn"
+    url = "https://me.csdn.net/qq_34581279"
