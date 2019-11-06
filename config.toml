@@ -17,14 +17,20 @@ paginate = 10
     url                    = "/tecs/"
     title                  = "技术分享"
   [[menu.main]]
-    name                   = "随笔"
+    name                   = "技术系列"
     weight                 = 3
+    identifier             = "系列"
+    url                    = "/books/"
+    title                  = "技术系列"
+  [[menu.main]]
+    name                   = "随笔"
+    weight                 = 4
     identifier             = "随笔"
     url                    = "/free/"
     title                  = "生活随笔"
   [[menu.main]]
     name                   = "关于"
-    weight                 = 4
+    weight                 = 5
     identifier             = "关于"
     url                    = "/about/"
     title                  = "关于"
