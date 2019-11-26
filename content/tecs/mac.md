@@ -10,7 +10,7 @@ draft: false
 
 ### 如何配置一台适合开发使用的mac
 
-这里我以java开发举例,介绍一些关键性配置
+这里我只介绍一些关键性配置
 
 #### 触发角
 
@@ -85,12 +85,35 @@ Homebrew 可以理解为命令行应用管理软件,就像你能看得见的appS
 
    ```oz
    brew list
+   brew cask list
    ```
 
 5. 卸载包
 
    ```oz
    brew uninstall ***
+   ```
+   
+
+6. 启动服务
+
+   ```oz
+   brew services run formula|--all  # 启动服务（仅启动不注册）
+   brew services start formula|--all  # 启动服务，并注册
+   brew services restart formula|--all  # 重启服务，并注册
+   ```
+
+7. 查看启动的服务
+
+   ```oz
+   brew services list  # 查看使用brew安装的服务列表
+   brew services cleanup  # 清除已卸载应用的无用的配置
+   ```
+
+8. 停止服务
+
+   ```oz
+   brew services stop formula|--all   # 停止服务，并取消注册
    ```
 
 #### 环境变量的配置
