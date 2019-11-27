@@ -62,7 +62,7 @@ gitbook serve
 
 如图所示,就是我们刚创建的目录
 
-<img src="/gitbook/1.png" width="70%" height="40%" alt="" align=center>
+<img src="/book/1.png" width="70%" height="40%" alt="" align=center>
 
 ## 生成网页不启动gitbook
 
