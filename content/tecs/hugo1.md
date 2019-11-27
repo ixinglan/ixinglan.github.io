@@ -36,7 +36,7 @@ cd ~/  # 进入到个人目录下
 hugo new site test-blog  # 生成一个名为test-blog的站点
 ```
 
-<img src="/hugo/1.png" width="700" height="100" alt="" align=center>
+<img src="/hugo/1.png" width="70%" height="10%" alt="" align=center>
 
 如图进入test-blog目录,我们看到站点目录结构如下,我们只关注有注释的目录即可
 
@@ -114,13 +114,13 @@ hugo server -D
 
 如图所示,即代表成功
 
-<img src="/hugo/2.png" width="600" height="250" alt="" align=center>
+<img src="/hugo/2.png" width="60%" height="25%" alt="" align=center>
 
 **我们可通过标示地址: *localhost:1313*进行本地预览**
 
 如下图即为运行结果
 
-<img src="/hugo/3.png" width="600" height="400" alt="" align=center>
+<img src="/hugo/3.png" width="60%" height="40%" alt="" align=center>
 
 ### 编译
 

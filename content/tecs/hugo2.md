@@ -6,8 +6,7 @@ draft: false
 
 ## GitHub Pages绑定到自己的域名
 
-1. 申请个人域名,完成备案,比如,我的*zhaojq.top*
-2. 域名管理后台设置域名解析,比如,我将我的二级域名 blog.zhaojq.top 添加一个CNAME解析到https://{username}.github.io,比如,我将我的二级域名 *blog.zhaojq.top* 添加一个CNAME解析到*https://{username}.github.io*
+1. 申请个人域名,完成备案,比如,我将我的二级域名 *blog.zhaojq.top* 添加一个CNAME解析到*https://{username}.github.io*
 3. 在GitHub账户工程  Settings/GitHub Pages /Custom domain处填写自己的域名信息
 4. 即可通过 *https://blog.zhaojq.top* 访问自己的个人博客
 
@@ -65,7 +64,7 @@ https://github.com/vaga/hugo-theme-m10c
 
 效果如图
 
-<img src="/hugo/4.png" width="400" height="300" alt="" align=center>
+<img src="/hugo/4.png" width="40%" height="30%" alt="" align=center>
 
 #### 配置其他参数
 
@@ -85,7 +84,7 @@ https://github.com/vaga/hugo-theme-m10c
 
 效果如图
 
-<img src="/hugo/5.png" width="300" height="700" alt="" align=center>
+<img src="/hugo/5.png" width="30%" height="70%" alt="" align=center>
 
 #### 遇到的问题
 
