@@ -14,11 +14,17 @@ draft: false
 
 &emsp;&emsp;Hugo官网: [https://gohugo.io/commands/hugo/](https://gohugo.io/commands/hugo/)
 
-&emsp;&emsp;Hugo中文网站(此站翻译的较少,本博主之后会出一些搭建教程): [https://www.gohugo.org/](https://www.gohugo.org/)
+&emsp;&emsp;Hugo中文网站: [https://www.gohugo.org/](https://www.gohugo.org/)
 
 &emsp;&emsp;我的GitHub: [https://github.com/zhao-xiaoer](https://github.com/zhao-xiaoer)
 
+​		我的码云:[https://gitee.com/iqiangqiang](https://gitee.com/iqiangqiang)
+
 &emsp;&emsp;我的CSDN: [https://me.csdn.net/qq_34581279](https://me.csdn.net/qq_34581279)
+
+​        我的简书:[https://www.jianshu.com/u/081d982d3421](https://www.jianshu.com/u/081d982d3421)
+
+​		我的开源中国:[https://my.oschina.net/gdct](https://my.oschina.net/gdct)		
 
 &emsp;&emsp;我的QQ号: 1527769446
 
