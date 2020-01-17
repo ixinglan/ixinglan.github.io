@@ -94,7 +94,6 @@ Homebrew 可以理解为命令行应用管理软件,就像你能看得见的appS
    brew uninstall ***
    ```
    
-
 6. 启动服务
 
    ```oz
