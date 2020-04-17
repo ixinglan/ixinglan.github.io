@@ -17,7 +17,7 @@ paginate = 10
     url                    = "/tecs/"
     title                  = "技术分享"
   [[menu.main]]
-    name                   = "技术系列"
+    name                   = "系列"
     weight                 = 3
     identifier             = "系列"
     url                    = "/books/"
