@@ -33,9 +33,9 @@ HostName 192.168.1.3
 User root 
 IdentitiesOnly yes 
 ```
-这时候我们只需要 ssh server1这样就可以连接了,省去了输入用户名和ip地址,但这时候仍然会提示输入密码,这是我们不好记忆的
-#配置免密登录
-##在每台服务器下生成rsa 公钥和私钥
+这时候我们只需要 ssh server1这样就可以连接了,省去了输入用户名和ip地址,但这时候仍然会提示输入密码,这是我们不好记忆的  
+# 配置免密登录  
+## 在每台服务器下生成rsa 公钥和私钥
 ```shell script
 ssh-keygen -t rsa #生成密钥命令,然后一路enter键就行
 
@@ -60,8 +60,8 @@ The key's randomart image is:
 | .   oo          |
 +----[SHA256]-----+
 ```
-成功后会在.shh目录下生成id_rsa(私钥)  id_rsa.pub(公钥)两个文件
-##将公钥拷贝到目标服务器
+成功后会在.shh目录下生成id_rsa(私钥)  id_rsa.pub(公钥)两个文件  
+## 将公钥拷贝到目标服务器
 这个过程实际是一个信任过程,比如将server1的id_rsa.pub拷贝到server2,server3,则代表server2,server3允许server1免密ssh连接,同理
 将server2的公钥拷贝到server1,server3, 将server3的公钥拷贝到server1,server2  
 拷贝方式有两种,例如  
@@ -78,13 +78,13 @@ ssh server2 #连接server2
 cd .ssh
 vim authorized_keys #打开 authorized_keys配置文件
 #将刚才复制的公钥内容写入该authorized_keys文件保存即可, 第2种方式实际同第1种一样,手动操作更繁琐一些
-```
-##免密连接
+```  
+## 免密连接
 至此,我们就可以远程ssh免官连接了,例如,在server1下
 ```shell script
 ssh server2 #直接进入了server2的用户目录,无需输入密码
 ```
-#mac终端如果免密连接上述服务器
+# mac终端如果免密连接上述服务器
 由于个人笔记本与上述server1,server2,server3不在同一个内网,帮config配置文件需要配置server1,server2,server3的公网ip  
 mac上生成本地私钥和公钥文件  
 将生成的公钥文件内容copy到server1,server2,server3的authorized_keys配置文件,流程和上面一样  
