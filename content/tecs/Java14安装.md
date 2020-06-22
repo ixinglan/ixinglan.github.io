@@ -26,8 +26,8 @@ draft: false
 368:	Text Blocks (Second Preview)
 370:	Foreign-Memory Access API (Incubator)
 ```
-下面我们就常用到的特性改变举例看一下
-1. 305:	Pattern Matching for instanceof (Preview) instanceof新特性
+下面我们就常用到的特性改变举例看一下  
+1.305:	Pattern Matching for instanceof (Preview) instanceof新特性
 ```java
 //以前我们是这么使用的
 if (obj instanceof String) {
@@ -52,7 +52,7 @@ if (obj instanceof String s && s.length > 10) {
     // can use s here
 }
 ```
-2. 359:	Records (Preview) 记录类型
+2.359:	Records (Preview) 记录类型
 ```java
 import static java.util.Calendar.*;
 
@@ -70,7 +70,7 @@ public class Test {
 }
 
 ```
-3. 361:	Switch Expressions (Standard) switch语法形式改变
+3.361:	Switch Expressions (Standard) switch语法形式改变
 ```java
 import static java.util.Calendar.*;
 
@@ -116,7 +116,7 @@ public class Test {
 }
 
 ```
-4. 368:	Text Blocks (Second Preview) 文本块
+4.368:	Text Blocks (Second Preview) 文本块
 ```java
 //old
 String html = "<html>\n" +
