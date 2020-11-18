@@ -37,7 +37,7 @@ paginate = 10
 [params]
   author = "zhaoxr"
   description = "The road through the summit is always difficult and lonely"
-  avatar = "avatar.jpeg"
+  avatar = "my.png"
   
   [[params.social]]
     name = "github"
