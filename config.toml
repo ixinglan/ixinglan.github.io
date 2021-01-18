@@ -45,3 +45,6 @@ paginate = 10
   [[params.social]]
     name = "csdn"
     url = "https://me.csdn.net/qq_34581279"
+  [[params.social]]
+      name = "gitee"
+      url = "https://gitee.com/iqiangqiang"
