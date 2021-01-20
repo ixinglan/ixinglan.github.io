@@ -43,10 +43,10 @@ paginate = 10
 
   [[params.social]]
     name = "github"
-    url = "https://github.com/zhao-xiaoer"
+    url = "https://github.com/ixinglan"
   [[params.social]]
     name = "csdn"
     url = "https://me.csdn.net/qq_34581279"
   [[params.social]]
       name = "gitee"
-      url = "https://gitee.com/iqiangqiang"
+      url = "https://gitee.com/ixinglan"

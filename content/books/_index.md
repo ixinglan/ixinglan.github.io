@@ -4,7 +4,7 @@ date: 2019-11-06T14:22:04+08:00
 draft: false
 ---
 
-前往books站点查看技术系列: [https://blog.zhaojq.top/gitbook/](https://blog.zhaojq.top/gitbook/)
+前往books站点查看技术系列: [https://blog.zhaojq.top/tbook/](https://blog.zhaojq.top/tbook/)
 
 - JAVA
 - GO

@@ -16,11 +16,11 @@ draft: false
 
 &emsp;&emsp;Hugo中文网站: [https://www.gohugo.org/](https://www.gohugo.org/)
 
-&emsp;&emsp;我的GitHub: [https://github.com/zhao-xiaoer](https://github.com/zhao-xiaoer)
+&emsp;&emsp;我的GitHub: [https://github.com/ixinglan](https://github.com/ixinglan)
 
 &emsp;&emsp;我的CSDN: [https://me.csdn.net/qq_34581279](https://me.csdn.net/qq_34581279)
 
-&emsp;&emsp;我的Gitee: [https://gitee.com/iqiangqiang](https://gitee.com/iqiangqiang)
+&emsp;&emsp;我的Gitee: [https://gitee.com/ixinglan](https://gitee.com/ixinglan)
 
 &emsp;&emsp;我的QQ号: 1527769446
 
