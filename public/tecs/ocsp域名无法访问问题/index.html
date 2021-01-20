@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>Let&#39;s Encrypt SSL证书ocsp域名无法访问解决办法 // 古道长亭</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="zhaoxr" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://blog.zhaojq.top/css/main.min.9ca930c32c2e4c460588f0d531e2af8c91af1d68068590a99c17e454d2968c0f.css" />
+    <link rel="shortcut icon" href="shortcut.jpeg" />
+    <link rel="bookmark" href="bookmark.jpeg" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Let&#39;s Encrypt SSL证书ocsp域名无法访问解决办法"/>
+<meta name="twitter:description" content="不少公司会用Let&rsquo;s Encrypt 免费ssl证书, 但由于国内无法访问其ocsp域名,会导致不能签发证书、OCSP Stapling 失败、ios内置H5页面及网页打开缓慢等问题
+针对这个问题,有以下两种解决办法:
+1.切换http,但当下https普及的情况下,不推荐
+2.购买SSL证书,可根据访问量及其他综合考虑购买对应证书
+3.本地修改hosts的方案进行临时处理,但不是长久方案,不稳定 在/etc/hosts中添加
+23.32.3.72 ocsp.int-x3.letsencrypt.org  获取ocsp响应
+openssl ocsp -no_nonce \ -respout /path/to/certs/holmesian.org/ocsp_res.der \ -issuer /path/to/certs/holmesian.org/ca.cer \ -cert /path/to/certs/holmesian.org/holmesian.org.cer \ -url http://ocsp.int-x3.letsencrypt.org/ \ -header &quot;HOST&quot; &quot;ocsp.int-x3.letsencrypt.org&quot; #-cert 、 -issuer 、 -CAfile 分别对应的是子证书、中间证书、根证书，其实全部使用 acme.sh 文件夹中的 fullchain.cer 也是可以的 #-respout 是 OCSP 响应保存位置，将这个位置填入在 nginx 配置文件的 ssl_stapling_file 中，如下开启ssl_stapling  这里如果出现如下错误的话，说明你的openssl使用了1.1.0版本，这个时候已经不需要指定HOST，把上面命令中的“-header &ldquo;HOST&rdquo; &ldquo;ocsp.int-x3.letsencrypt.org&rdquo;”删掉就好了
+ssl_stapling on; ssl_stapling_verify on; ssl_stapling_file /root/.acme.sh/*.holmesian.org_ecc/ocsp_res.der;  重载nginx服务后,检查是否开启
+openssl s_client -connect holmesian.org:443 -status -tlsextdebug &lt; /dev/null 2&gt;&amp;1 | grep -i &quot;OCSP response&quot;  如果显示successful,则代表成功,可以将期制成脚本,加到crontab中自动执行"/>
+
+    <meta property="og:title" content="Let&#39;s Encrypt SSL证书ocsp域名无法访问解决办法" />
+<meta property="og:description" content="不少公司会用Let&rsquo;s Encrypt 免费ssl证书, 但由于国内无法访问其ocsp域名,会导致不能签发证书、OCSP Stapling 失败、ios内置H5页面及网页打开缓慢等问题
+针对这个问题,有以下两种解决办法:
+1.切换http,但当下https普及的情况下,不推荐
+2.购买SSL证书,可根据访问量及其他综合考虑购买对应证书
+3.本地修改hosts的方案进行临时处理,但不是长久方案,不稳定 在/etc/hosts中添加
+23.32.3.72 ocsp.int-x3.letsencrypt.org  获取ocsp响应
+openssl ocsp -no_nonce \ -respout /path/to/certs/holmesian.org/ocsp_res.der \ -issuer /path/to/certs/holmesian.org/ca.cer \ -cert /path/to/certs/holmesian.org/holmesian.org.cer \ -url http://ocsp.int-x3.letsencrypt.org/ \ -header &quot;HOST&quot; &quot;ocsp.int-x3.letsencrypt.org&quot; #-cert 、 -issuer 、 -CAfile 分别对应的是子证书、中间证书、根证书，其实全部使用 acme.sh 文件夹中的 fullchain.cer 也是可以的 #-respout 是 OCSP 响应保存位置，将这个位置填入在 nginx 配置文件的 ssl_stapling_file 中，如下开启ssl_stapling  这里如果出现如下错误的话，说明你的openssl使用了1.1.0版本，这个时候已经不需要指定HOST，把上面命令中的“-header &ldquo;HOST&rdquo; &ldquo;ocsp.int-x3.letsencrypt.org&rdquo;”删掉就好了
+ssl_stapling on; ssl_stapling_verify on; ssl_stapling_file /root/.acme.sh/*.holmesian.org_ecc/ocsp_res.der;  重载nginx服务后,检查是否开启
+openssl s_client -connect holmesian.org:443 -status -tlsextdebug &lt; /dev/null 2&gt;&amp;1 | grep -i &quot;OCSP response&quot;  如果显示successful,则代表成功,可以将期制成脚本,加到crontab中自动执行" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zhaojq.top/tecs/ocsp%E5%9F%9F%E5%90%8D%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/" />
+<meta property="article:published_time" content="2020-05-15T09:27:52+08:00" />
+<meta property="article:modified_time" content="2020-05-15T09:27:52+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://blog.zhaojq.top"><img class="app-header-avatar" src="/avatar.png" alt="zhaoxr" /></a>
+      <h1>古道长亭</h1>
+      <p>The road through the summit is always difficult and lonely</p>
+      <div class="app-header-menus">
+        <nav class="sidebar-nav">
+				  
+				    <a href="/posts/" title="首页">首页</a>
+				  
+				    <a href="/tecs/" title="技术分享">技术</a>
+				  
+				    <a href="/books/" title="技术系列">系列</a>
+				  
+				    <a href="/free/" title="生活随笔">随笔</a>
+				  
+				    <a href="/about/" title="关于">关于</a>
+				  
+				</nav>
+      </div>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://me.csdn.net/qq_34581279" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-csdn">
+  <title>csdn</title>
+  <path d="M32.392,1.067 C32.118,3.080 31.876,4.863 31.571,7.111 C27.992,6.559 24.431,6.049 20.851,6.345 C17.574,6.616 14.398,7.235 12.079,9.747 C7.821,14.358 10.138,20.714 16.570,21.848 C20.574,22.555 24.627,22.174 28.643,21.624 C28.488,24.734 28.480,24.260 28.340,27.301 C28.310,27.966 28.462,27.705 23.753,28.183 C18.758,28.433 13.767,28.493 8.980,26.720 C4.444,25.041 0.872,22.370 0.148,17.436 C-0.597,12.358 1.533,8.258 5.612,5.096 C11.733,0.349 22.443,-1.321 32.392,1.067 Z"/>
+</svg></a>
+        
+          <a target="_blank" href="https://gitee.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-gitee">
+  <title>gitee</title>
+  <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Let&#39;s Encrypt SSL证书ocsp域名无法访问解决办法</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          May 15, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <p>不少公司会用Let&rsquo;s Encrypt 免费ssl证书, 但由于国内无法访问其ocsp域名,会导致不能签发证书、OCSP Stapling 失败、ios内置H5页面及网页打开缓慢等问题<br />
+针对这个问题,有以下两种解决办法:<br />
+1.切换http,但当下https普及的情况下,不推荐<br />
+2.购买SSL证书,可根据访问量及其他综合考虑购买对应证书<br />
+3.本地修改hosts的方案进行临时处理,但不是长久方案,不稳定
+在/etc/hosts中添加</p>
+
+<pre><code>23.32.3.72     ocsp.int-x3.letsencrypt.org
+</code></pre>
+
+<p>获取ocsp响应</p>
+
+<pre><code>openssl ocsp -no_nonce \
+                 -respout /path/to/certs/holmesian.org/ocsp_res.der \
+                 -issuer /path/to/certs/holmesian.org/ca.cer \
+                 -cert /path/to/certs/holmesian.org/holmesian.org.cer \
+                 -url http://ocsp.int-x3.letsencrypt.org/ \
+                 -header &quot;HOST&quot; &quot;ocsp.int-x3.letsencrypt.org&quot;
+#-cert 、 -issuer 、 -CAfile 分别对应的是子证书、中间证书、根证书，其实全部使用 acme.sh 文件夹中的 fullchain.cer 也是可以的
+#-respout 是 OCSP 响应保存位置，将这个位置填入在 nginx 配置文件的 ssl_stapling_file 中，如下开启ssl_stapling
+</code></pre>
+
+<p>这里如果出现如下错误的话，说明你的openssl使用了1.1.0版本，这个时候已经不需要指定HOST，把上面命令中的“-header &ldquo;HOST&rdquo; &ldquo;ocsp.int-x3.letsencrypt.org&rdquo;”删掉就好了</p>
+
+<pre><code>ssl_stapling on;
+ssl_stapling_verify on;
+ssl_stapling_file /root/.acme.sh/*.holmesian.org_ecc/ocsp_res.der;
+</code></pre>
+
+<p>重载nginx服务后,检查是否开启</p>
+
+<pre><code>openssl s_client -connect holmesian.org:443 -status -tlsextdebug &lt; /dev/null 2&gt;&amp;1 | grep -i &quot;OCSP response&quot;
+</code></pre>
+
+<p>如果显示successful,则代表成功,可以将期制成脚本,加到crontab中自动执行</p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

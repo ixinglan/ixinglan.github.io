@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>mac常用配置 // 古道长亭</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="zhaoxr" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://blog.zhaojq.top/css/main.min.9ca930c32c2e4c460588f0d531e2af8c91af1d68068590a99c17e454d2968c0f.css" />
+    <link rel="shortcut icon" href="shortcut.jpeg" />
+    <link rel="bookmark" href="bookmark.jpeg" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="mac常用配置"/>
+<meta name="twitter:description" content="个人笔电的选择 如果你是一个java程序员,那么你肯定用过Eclipse 和 Intellij IDEA, Mac 之于Windows,就像idea之于eclipse, mac设计的美观性,系统的流畅度,环境的整洁,应用的管理,友好的操作&hellip;..绝对会让你迷上它.
+如何配置一台适合开发使用的mac 这里我只介绍一些关键性配置
+触发角 在系统偏好设置/桌面与屏幕保护程序/屏幕保护程序 菜单下,会有触发角的设置,即鼠标快速移动到屏幕四个角,可以触发不同的操作,比如,关闭屏幕,调度中心,启动台,程序窗口等,可以快速的帮助你进行一系统方便的操作.
+zsh mac的终端是默认是bash,但zsh才是一个更加强大的命令行工具
+切换到bash: chsh -s /bin/bash  切换到zsh chsh -s /bin/zsh  Oh my zsh zsh具有强大的可定制的特点，支持许多插件,补全功能也强大很多.但是却配置起来十分的麻烦，但有了oh-my-zsh之后，一切变得简单起来了
+ 安装 oh my zsh  首先切换到zsh,以下命令由于是国外链接,有时会显示失败,多尝试或者切换网络再尝试
+$ sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;   配置主题
+vim ~/.zshrc   主题选择可以从这里选择,直接覆盖配置文件名字即可
+https://github.com/ohmyzsh/ohmyzsh/wiki/Themes  Homebrew Homebrew 可以理解为命令行应用管理软件,就像你能看得见的appStore一样,只不过它是通过命令行管理的
+ 安装homebrew,同oh my zsh一样,如果失败,切换网络或者多次尝试即可
+/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;  查找软件
+brew search ***   这时会有Formulae和Casks两种类型,Formulae是一些常用包,比如java,python,go等安装包, cask是软件"/>
+
+    <meta property="og:title" content="mac常用配置" />
+<meta property="og:description" content="个人笔电的选择 如果你是一个java程序员,那么你肯定用过Eclipse 和 Intellij IDEA, Mac 之于Windows,就像idea之于eclipse, mac设计的美观性,系统的流畅度,环境的整洁,应用的管理,友好的操作&hellip;..绝对会让你迷上它.
+如何配置一台适合开发使用的mac 这里我只介绍一些关键性配置
+触发角 在系统偏好设置/桌面与屏幕保护程序/屏幕保护程序 菜单下,会有触发角的设置,即鼠标快速移动到屏幕四个角,可以触发不同的操作,比如,关闭屏幕,调度中心,启动台,程序窗口等,可以快速的帮助你进行一系统方便的操作.
+zsh mac的终端是默认是bash,但zsh才是一个更加强大的命令行工具
+切换到bash: chsh -s /bin/bash  切换到zsh chsh -s /bin/zsh  Oh my zsh zsh具有强大的可定制的特点，支持许多插件,补全功能也强大很多.但是却配置起来十分的麻烦，但有了oh-my-zsh之后，一切变得简单起来了
+ 安装 oh my zsh  首先切换到zsh,以下命令由于是国外链接,有时会显示失败,多尝试或者切换网络再尝试
+$ sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;   配置主题
+vim ~/.zshrc   主题选择可以从这里选择,直接覆盖配置文件名字即可
+https://github.com/ohmyzsh/ohmyzsh/wiki/Themes  Homebrew Homebrew 可以理解为命令行应用管理软件,就像你能看得见的appStore一样,只不过它是通过命令行管理的
+ 安装homebrew,同oh my zsh一样,如果失败,切换网络或者多次尝试即可
+/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;  查找软件
+brew search ***   这时会有Formulae和Casks两种类型,Formulae是一些常用包,比如java,python,go等安装包, cask是软件" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zhaojq.top/tecs/mac/" />
+<meta property="article:published_time" content="2019-11-06T00:08:17+08:00" />
+<meta property="article:modified_time" content="2019-11-06T00:08:17+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://blog.zhaojq.top"><img class="app-header-avatar" src="/avatar.png" alt="zhaoxr" /></a>
+      <h1>古道长亭</h1>
+      <p>The road through the summit is always difficult and lonely</p>
+      <div class="app-header-menus">
+        <nav class="sidebar-nav">
+				  
+				    <a href="/posts/" title="首页">首页</a>
+				  
+				    <a href="/tecs/" title="技术分享">技术</a>
+				  
+				    <a href="/books/" title="技术系列">系列</a>
+				  
+				    <a href="/free/" title="生活随笔">随笔</a>
+				  
+				    <a href="/about/" title="关于">关于</a>
+				  
+				</nav>
+      </div>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://me.csdn.net/qq_34581279" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-csdn">
+  <title>csdn</title>
+  <path d="M32.392,1.067 C32.118,3.080 31.876,4.863 31.571,7.111 C27.992,6.559 24.431,6.049 20.851,6.345 C17.574,6.616 14.398,7.235 12.079,9.747 C7.821,14.358 10.138,20.714 16.570,21.848 C20.574,22.555 24.627,22.174 28.643,21.624 C28.488,24.734 28.480,24.260 28.340,27.301 C28.310,27.966 28.462,27.705 23.753,28.183 C18.758,28.433 13.767,28.493 8.980,26.720 C4.444,25.041 0.872,22.370 0.148,17.436 C-0.597,12.358 1.533,8.258 5.612,5.096 C11.733,0.349 22.443,-1.321 32.392,1.067 Z"/>
+</svg></a>
+        
+          <a target="_blank" href="https://gitee.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-gitee">
+  <title>gitee</title>
+  <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">mac常用配置</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Nov 6, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h3 id="个人笔电的选择">个人笔电的选择</h3>
+
+<p>如果你是一个java程序员,那么你肯定用过Eclipse 和 Intellij IDEA, Mac 之于Windows,就像idea之于eclipse, mac设计的美观性,系统的流畅度,环境的整洁,应用的管理,友好的操作&hellip;..绝对会让你迷上它.</p>
+
+<h3 id="如何配置一台适合开发使用的mac">如何配置一台适合开发使用的mac</h3>
+
+<p>这里我只介绍一些关键性配置</p>
+
+<h4 id="触发角">触发角</h4>
+
+<p>在系统偏好设置/桌面与屏幕保护程序/屏幕保护程序 菜单下,会有触发角的设置,即鼠标快速移动到屏幕四个角,可以触发不同的操作,比如,关闭屏幕,调度中心,启动台,程序窗口等,可以快速的帮助你进行一系统方便的操作.</p>
+
+<h4 id="zsh">zsh</h4>
+
+<p>mac的终端是默认是bash,但zsh才是一个更加强大的命令行工具</p>
+
+<pre><code class="language-bash">切换到bash:
+chsh -s /bin/bash
+</code></pre>
+
+<pre><code class="language-oz">切换到zsh
+chsh -s /bin/zsh
+</code></pre>
+
+<h4 id="oh-my-zsh">Oh my zsh</h4>
+
+<p>zsh具有强大的可定制的特点，支持许多插件,补全功能也强大很多.但是却配置起来十分的麻烦，但有了oh-my-zsh之后，一切变得简单起来了</p>
+
+<ol>
+<li>安装 oh my zsh</li>
+</ol>
+
+<p>首先切换到zsh,以下命令由于是国外链接,有时会显示失败,多尝试或者切换网络再尝试</p>
+
+<pre><code class="language-oz">   $ sh -c &quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&quot;
+</code></pre>
+
+<ol>
+<li><p>配置主题</p>
+
+<pre><code class="language-oz">vim ~/.zshrc
+</code></pre></li>
+</ol>
+
+<p><img src="/mac/zshrc.png" width="460" height="250" alt="" align=center></p>
+
+<p>主题选择可以从这里选择,直接覆盖配置文件名字即可</p>
+
+<pre><code class="language-http">   https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+</code></pre>
+
+<h4 id="homebrew">Homebrew</h4>
+
+<p>Homebrew 可以理解为命令行应用管理软件,就像你能看得见的appStore一样,只不过它是通过命令行管理的</p>
+
+<ol>
+<li><p>安装homebrew,同oh my zsh一样,如果失败,切换网络或者多次尝试即可</p>
+
+<pre><code class="language-oz">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre></li>
+
+<li><p>查找软件</p>
+
+<pre><code class="language-oz">brew search ***
+</code></pre></li>
+</ol>
+
+<p>这时会有<strong>Formulae</strong>和<strong>Casks</strong>两种类型,Formulae是一些常用包,比如java,python,go等安装包, cask是软件</p>
+
+<ol>
+<li><p>安装软件</p>
+
+<pre><code class="language-oz">brew install ***
+brew cask install ***
+</code></pre></li>
+
+<li><p>查看安装的软件</p>
+
+<pre><code class="language-oz">brew list
+brew cask list
+</code></pre></li>
+
+<li><p>卸载包</p>
+
+<pre><code class="language-oz">brew uninstall ***
+</code></pre></li>
+
+<li><p>启动服务</p>
+
+<pre><code class="language-oz">brew services run formula|--all  # 启动服务（仅启动不注册）
+brew services start formula|--all  # 启动服务，并注册
+brew services restart formula|--all  # 重启服务，并注册
+</code></pre></li>
+
+<li><p>查看启动的服务</p>
+
+<pre><code class="language-oz">brew services list  # 查看使用brew安装的服务列表
+brew services cleanup  # 清除已卸载应用的无用的配置
+</code></pre></li>
+
+<li><p>停止服务</p>
+
+<pre><code class="language-oz">brew services stop formula|--all   # 停止服务，并取消注册
+</code></pre></li>
+</ol>
+
+<h4 id="环境变量的配置">环境变量的配置</h4>
+
+<pre><code class="language-bash">a. /etc/profile 
+b. /etc/paths 
+c. ~/.bash_profile 
+d. ~/.bash_login 
+e. ~/.profile 
+f. ~/.bashrc 
+</code></pre>
+
+<p>其中a和b是<code>系统级别</code>的，系统启动就会加载，其余是用户接别的。c,d,e按照从前往后的<code>顺序读取</code>，如果c文件存在，则后面的几个文件就会被忽略<code>不读了</code>，以此类推。~/.bashrc没有上述规则，它是bash shell打开的时候载入的。这里建议在.bash_profile中添加环境变量
+以maven举例:</p>
+
+<pre><code class="language-visual">export M2_HOME=/Users/zhaojianqiang/tools/apache-maven-3.6.2
+export PATH=$PATH:$M2_HOME/bin
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

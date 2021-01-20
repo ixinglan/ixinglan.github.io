@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>如何使用Gitbook搭建个人文档 // 古道长亭</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="zhaoxr" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://blog.zhaojq.top/css/main.min.9ca930c32c2e4c460588f0d531e2af8c91af1d68068590a99c17e454d2968c0f.css" />
+    <link rel="shortcut icon" href="shortcut.jpeg" />
+    <link rel="bookmark" href="bookmark.jpeg" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何使用Gitbook搭建个人文档"/>
+<meta name="twitter:description" content="GitBook的使用相较之下还是比较的简单,插件也相对丰富
+安装node.js(使用homebrew安装即可) node -v #v12.12.0  安装gitbook $ npm install gitbook-cli -g  检验安装 gitbook -V # CLI version: 2.3.2 # GitBook version: 3.2.3  创建目录 test-gitbook cd test-gitbook gitbook init # 可以看到多了README.md SUMMARY.md 两个文件  编辑summary.md # Summary * [前言](README.md) * [JAVA技术](Chapter1/README.md) * [GO技术](Chapter2/README.md) * [深入理解JVM](Chapter3/README.md) * [算法知识](Chapter4/README.md) * [SPRING系列](Chapter5/README.md) * [Spring](Chapter5/Spring.md) * [SpringBoot](Chapter5/SpringBoot.md) * [SpringCloud](Chapter5/SpringCloud.md) * [DOCKER](Chapter6/README.md) * [NETTY](Chapter7/README.md)  生成网页并启动gitbook gitbook serve # 通过http://localhost:4000即可访问  如图所示,就是我们刚创建的目录"/>
+
+    <meta property="og:title" content="如何使用Gitbook搭建个人文档" />
+<meta property="og:description" content="GitBook的使用相较之下还是比较的简单,插件也相对丰富
+安装node.js(使用homebrew安装即可) node -v #v12.12.0  安装gitbook $ npm install gitbook-cli -g  检验安装 gitbook -V # CLI version: 2.3.2 # GitBook version: 3.2.3  创建目录 test-gitbook cd test-gitbook gitbook init # 可以看到多了README.md SUMMARY.md 两个文件  编辑summary.md # Summary * [前言](README.md) * [JAVA技术](Chapter1/README.md) * [GO技术](Chapter2/README.md) * [深入理解JVM](Chapter3/README.md) * [算法知识](Chapter4/README.md) * [SPRING系列](Chapter5/README.md) * [Spring](Chapter5/Spring.md) * [SpringBoot](Chapter5/SpringBoot.md) * [SpringCloud](Chapter5/SpringCloud.md) * [DOCKER](Chapter6/README.md) * [NETTY](Chapter7/README.md)  生成网页并启动gitbook gitbook serve # 通过http://localhost:4000即可访问  如图所示,就是我们刚创建的目录" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zhaojq.top/tecs/gitbook/" />
+<meta property="article:published_time" content="2019-11-27T09:41:50+08:00" />
+<meta property="article:modified_time" content="2019-11-27T09:41:50+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://blog.zhaojq.top"><img class="app-header-avatar" src="/avatar.png" alt="zhaoxr" /></a>
+      <h1>古道长亭</h1>
+      <p>The road through the summit is always difficult and lonely</p>
+      <div class="app-header-menus">
+        <nav class="sidebar-nav">
+				  
+				    <a href="/posts/" title="首页">首页</a>
+				  
+				    <a href="/tecs/" title="技术分享">技术</a>
+				  
+				    <a href="/books/" title="技术系列">系列</a>
+				  
+				    <a href="/free/" title="生活随笔">随笔</a>
+				  
+				    <a href="/about/" title="关于">关于</a>
+				  
+				</nav>
+      </div>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://me.csdn.net/qq_34581279" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-csdn">
+  <title>csdn</title>
+  <path d="M32.392,1.067 C32.118,3.080 31.876,4.863 31.571,7.111 C27.992,6.559 24.431,6.049 20.851,6.345 C17.574,6.616 14.398,7.235 12.079,9.747 C7.821,14.358 10.138,20.714 16.570,21.848 C20.574,22.555 24.627,22.174 28.643,21.624 C28.488,24.734 28.480,24.260 28.340,27.301 C28.310,27.966 28.462,27.705 23.753,28.183 C18.758,28.433 13.767,28.493 8.980,26.720 C4.444,25.041 0.872,22.370 0.148,17.436 C-0.597,12.358 1.533,8.258 5.612,5.096 C11.733,0.349 22.443,-1.321 32.392,1.067 Z"/>
+</svg></a>
+        
+          <a target="_blank" href="https://gitee.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-gitee">
+  <title>gitee</title>
+  <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">如何使用Gitbook搭建个人文档</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Nov 27, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          2 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>GitBook的使用相较之下还是比较的简单,插件也相对丰富</p>
+
+<h2 id="安装node-js-使用homebrew安装即可">安装node.js(使用homebrew安装即可)</h2>
+
+<pre><code class="language-bash">node -v #v12.12.0
+</code></pre>
+
+<h2 id="安装gitbook">安装gitbook</h2>
+
+<pre><code class="language-bash">$ npm install gitbook-cli -g
+</code></pre>
+
+<h2 id="检验安装">检验安装</h2>
+
+<pre><code class="language-bash">gitbook -V
+#  CLI version: 2.3.2
+#  GitBook version: 3.2.3
+</code></pre>
+
+<h2 id="创建目录-test-gitbook">创建目录 test-gitbook</h2>
+
+<pre><code class="language-bash">cd test-gitbook
+gitbook init
+# 可以看到多了README.md  SUMMARY.md 两个文件
+</code></pre>
+
+<h2 id="编辑summary-md">编辑summary.md</h2>
+
+<pre><code class="language-markdown"># Summary
+
+* [前言](README.md)
+* [JAVA技术](Chapter1/README.md)
+* [GO技术](Chapter2/README.md)
+* [深入理解JVM](Chapter3/README.md)
+* [算法知识](Chapter4/README.md)
+* [SPRING系列](Chapter5/README.md)
+    * [Spring](Chapter5/Spring.md)
+    * [SpringBoot](Chapter5/SpringBoot.md)
+    * [SpringCloud](Chapter5/SpringCloud.md)
+* [DOCKER](Chapter6/README.md)
+* [NETTY](Chapter7/README.md)
+</code></pre>
+
+<h2 id="生成网页并启动gitbook">生成网页并启动gitbook</h2>
+
+<pre><code class="language-bash">gitbook serve
+
+# 通过http://localhost:4000即可访问
+</code></pre>
+
+<p>如图所示,就是我们刚创建的目录</p>
+
+<p><img src="/book/1.png" width="70%" height="40%" alt="" align=center></p>
+
+<h2 id="生成网页不启动gitbook">生成网页不启动gitbook</h2>
+
+<pre><code class="language-bash">gitbook build 
+#默认将静态页面生成在 _book目录下,如果想指定目录,比如托管在github上,则需要生成在docs目录,可以使用以下命令
+gitbook build ./ ./docs
+</code></pre>
+
+<h2 id="目录结构">目录结构</h2>
+
+<p>再次执行gitbook init,即可看到目录下初始化了在SUMMARY.md里配置的目录结构</p>
+
+<pre><code class="language-bash">&gt;Chapter1   
+&gt;Chapter2   
+&gt;Chapter3   
+&gt;Chapter4   
+&gt;Chapter5   
+&gt;Chapter6   
+&gt;Chapter7   
+README.md  
+SUMMARY.md 
+&gt;_book       #此目录为gitbook build后生成的静态页面目录
+</code></pre>
+
+<p>我们只要在相应目录下添加我们的内容即可</p>
+
+<h2 id="插件的使用">插件的使用</h2>
+
+<pre><code class="language-markdown">Gitbook默认自带有5个插件：
+如果不用可以前面加-去掉
+highlight： 代码高亮
+search： 导航栏查询功能（不支持中文）
+sharing：右上角分享功能
+fontsettings：字体设置（最上方的&quot;A&quot;符号）
+livereload：为GitBook实时重新加载
+</code></pre>
+
+<p>如果想使用插件等,我们可以在目录下创建book.json配置文件,附上我的配置文件</p>
+
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;古道长亭&quot;,  //标题
+    &quot;author&quot;: &quot;古道长亭&quot;, //作者
+    &quot;description&quot;: &quot;welcome to my docs&quot;, //书描述
+    &quot;language&quot;: &quot;zh-hans&quot;, //语言 en, zh-hans, zh-tw
+    &quot;gitbook&quot;: &quot;3.2.3&quot;,  //指定gitbook版本
+    &quot;styles&quot;: {       //样式文件
+        &quot;website&quot;: &quot;./style/website.css&quot;
+    },
+    &quot;structure&quot;: {   //指定 Readme、Summary、Glossary 和 Languages 对应的文件名
+        &quot;readme&quot;: &quot;README.md&quot;
+    },
+    &quot;links&quot;: {      //左侧导航栏链接信息
+        &quot;sidebar&quot;: {
+            &quot;回到博客&quot;: &quot;https://blog.zhaojq.top&quot;
+        }
+    },
+    &quot;plugins&quot;: [    //插件列表
+        &quot;anchors&quot;,
+        &quot;anchor-navigation-ex&quot;,  //给页面H1-H6标题增加锚点效果,浮动导航模式,页面内顶部导航模式等
+        &quot;auto-scroll-table&quot;, //表格滚动条
+        &quot;advanced-emoji&quot;,   //支持emoji表情    
+        &quot;code&quot;, //代码添加行号&amp;复制按钮
+        &quot;chapter-fold&quot;, //导航目录折叠
+        &quot;donate&quot;, //打赏插件
+        &quot;expandable-chapters-small&quot;,//可扩展导航章节,比toggle-chapters好用
+        &quot;favicon&quot;, //标题栏图标配置
+        &quot;fontsettings&quot;,   //字体设置（最上方的&quot;A&quot;符号）                     
+        &quot;github&quot;,  //在右上角添加github图标
+        &quot;github-buttons&quot;,//github按钮显示,包括可配置stars数量等
+        &quot;klipse&quot;,  //嵌入类似IDE的功能
+        &quot;-livereload&quot;, //为GitBook实时重新加载
+        &quot;-lunr&quot;, //自带搜索
+        &quot;pageview-count&quot;, //阅读量计数
+        &quot;page-toc-button&quot;, //page-toc-button
+        &quot;popup&quot;, //弹出大图
+        &quot;sharing-plus&quot;, //分享插件
+        &quot;-sharing&quot;, //自带分享
+        &quot;splitter&quot;, //侧边栏宽度可调节
+        &quot;-search&quot;,  //自带搜索,前面加-去掉
+        &quot;search-pro&quot;, //高级搜索插件 需要将默认的search和lunr 插件去掉
+        &quot;toggle-chapters&quot;, //扩展导航章节,由expandable-chapters-small代替
+        &quot;tbfed-pagefooter&quot;, //页面添加页脚（简单的）
+        &quot;todo&quot;, //待做项
+        &quot;hide-element&quot; //隐藏元素,比如导航栏中Published by GitBook,&quot;elements&quot;: [&quot;.gitbook-link&quot;]
+    ],
+    &quot;pluginsConfig&quot;: {   //配置插件的属性
+        &quot;github&quot;: {
+            &quot;url&quot;: &quot;https://github.com/zhao-xiaoer&quot;
+        },
+        &quot;hide-element&quot;: {
+            &quot;elements&quot;: [&quot;.gitbook-link&quot;]
+        },
+        &quot;theme-default&quot;: {
+            &quot;showLevel&quot;: true
+        },
+        &quot;code&quot;: {
+            &quot;copyButtons&quot;: true
+        },
+        &quot;tbfed-pagefooter&quot;: {
+            &quot;copyright&quot;: &quot;Copyright © zhaojq 2019&quot;,
+            &quot;modify_label&quot;: &quot;本书发布时间：&quot;,
+            &quot;modify_format&quot;: &quot;YYYY-MM-DD HH:mm:ss&quot;
+        },
+        &quot;donate&quot;: {
+            &quot;wechat&quot;: &quot;/gitbook/source/images/wechat.jpeg&quot;,
+            &quot;alipay&quot;: &quot;/gitbook/source/images/alipay.jpeg&quot;,
+            &quot;title&quot;: &quot;感谢支持&quot;,
+            &quot;button&quot;: &quot;\uD83D\uDE00&quot;,
+            &quot;alipayText&quot;: &quot;支付宝打赏&quot;,
+            &quot;wechatText&quot;: &quot;微信打赏&quot;
+        },
+        &quot;github-buttons&quot;: {
+            &quot;buttons&quot;: [{
+                &quot;user&quot;: &quot;zhao-xiaoer&quot;,
+                &quot;repo&quot;: &quot;gitbook&quot;,
+                &quot;type&quot;: &quot;star&quot;,
+                &quot;size&quot;: &quot;small&quot;,
+                &quot;count&quot;: true
+                }
+            ]
+        },
+        &quot;page-toc-button&quot;: {
+            &quot;maxTocDepth&quot;: 2,
+            &quot;minTocSize&quot;: 2
+        },
+        &quot;sharing&quot;: {
+            &quot;douban&quot;: false,
+            &quot;facebook&quot;: false,
+            &quot;google&quot;: false,
+            &quot;hatenaBookmark&quot;: false,
+            &quot;instapaper&quot;: false,
+            &quot;line&quot;: false,
+            &quot;linkedin&quot;: false,
+            &quot;messenger&quot;: false,
+            &quot;pocket&quot;: false,
+            &quot;qq&quot;: true,
+            &quot;qzone&quot;: true,
+            &quot;stumbleupon&quot;: false,
+            &quot;twitter&quot;: false,
+            &quot;viber&quot;: false,
+            &quot;vk&quot;: false,
+            &quot;weibo&quot;: true,
+            &quot;whatsapp&quot;: false,
+            &quot;all&quot;: [
+                &quot;weibo&quot;,&quot;qq&quot;, &quot;qzone&quot;, &quot;douban&quot;, &quot;facebook&quot;,&quot;google&quot;,
+							  &quot;linkedin&quot;,&quot;twitter&quot;,&quot;whatsapp&quot;
+            ]
+        },
+        &quot;anchor-navigation-ex&quot;: {
+            &quot;showLevel&quot;: true
+        },
+        &quot;favicon&quot;:{
+            &quot;shortcut&quot;: &quot;&quot;,
+            &quot;bookmark&quot;: &quot;&quot;
+        }
+    }
+}
+</code></pre>
+
+<h3 id="使用以下命令安装插件">使用以下命令安装插件</h3>
+
+<pre><code class="language-bash">gitbook install
+</code></pre>
+
+<h2 id="发布">发布</h2>
+
+<p>首先build到docs目录,在github新建一个工程,例如:gitbook,将gitbook整个目录push到github/gitbook,配置个人域名的方法和hugo的配置一样,github会自动从docs目录加载静态页面.</p>
+
+<p>接下来你可以通过个人域名访问gitbook</p>
+
+<p>我的gitbook地址: <em><a href="https://blog.zhaojq.top/gitbook">https://blog.zhaojq.top/gitbook</a></em></p>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

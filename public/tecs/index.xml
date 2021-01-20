@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术分享 on 古道长亭</title>
+    <link>https://blog.zhaojq.top/tecs/</link>
+    <description>Recent content in 技术分享 on 古道长亭</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 31 Oct 2019 19:35:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.zhaojq.top/tecs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java14安装</title>
+      <link>https://blog.zhaojq.top/tecs/java14%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Fri, 19 Jun 2020 09:02:17 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/java14%E5%AE%89%E8%A3%85/</guid>
+      <description>jdk最新版本 截止目前,jdk版本已经更新到14
+jdk14新特性 https://openjdk.java.net/projects/jdk/14/ &amp;ndash;openjdk网站我们可以看到有以下16大特性
+305:	Pattern Matching for instanceof (Preview) 343:	Packaging Tool (Incubator) 345:	NUMA-Aware Memory Allocation for G1 349:	JFR Event Streaming 352:	Non-Volatile Mapped Byte Buffers 358:	Helpful NullPointerExceptions 359:	Records (Preview) 361:	Switch Expressions (Standard) 362:	Deprecate the Solaris and SPARC Ports 363:	Remove the Concurrent Mark Sweep (CMS) Garbage Collector 364:	ZGC on macOS 365:	ZGC on Windows 366:	Deprecate the ParallelScavenge + SerialOld GC Combination 367:	Remove the Pack200 Tools and API 368:	Text Blocks (Second Preview) 370:	Foreign-Memory Access API (Incubator)  下面我们就常用到的特性改变举例看一下</description>
+    </item>
+    
+    <item>
+      <title>Linux 使用别名免密ssh连接</title>
+      <link>https://blog.zhaojq.top/tecs/linux%E8%BF%9C%E7%A8%8Bssh%E4%BD%BF%E7%94%A8%E5%88%AB%E5%90%8D%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</link>
+      <pubDate>Wed, 17 Jun 2020 00:02:17 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/linux%E8%BF%9C%E7%A8%8Bssh%E4%BD%BF%E7%94%A8%E5%88%AB%E5%90%8D%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95/</guid>
+      <description>服务器ip地址 假设有3台服务器server1,server2,server3, IP地址信息如下 * server1 101.200.1.1(公网) 192.168.1.1(内网) * server2 201.200.1.1(公网) 192.168.1.2(内网) * server3 301.200.1.1(公网) 192.168.1.3(内网)
+我们假设3台服务器属于同一个内网(当然可以通过公网ip配置),接下来,我们配置服务器之间的别名免密登录
+配置别名 未配置之前我们通过ssh连接远程服务器的命令是这样的
+ssh user@host #然后按提示输入密码  在个人用户目录下进入.ssh隐藏目录,如果没有config配置文件的话,使用touch config创建一个
+vim config #打开配置文件, 配置如下信息 Host server1 #别名 HostName 192.168.1.1 #ip地址,我们这里使用内网ip User root #目标服务器用户名,我们这里使用root用户 IdentitiesOnly yes #固定写法 Host server2 HostName 192.168.1.2 User root IdentitiesOnly yes Host server3 HostName 192.168.1.3 User root IdentitiesOnly yes  这时候我们只需要 ssh server1这样就可以连接了,省去了输入用户名和ip地址,但这时候仍然会提示输入密码,这是我们不好记忆的
+配置免密登录 在每台服务器下生成rsa 公钥和私钥 ssh-keygen -t rsa #生成密钥命令,然后一路enter键就行 Generating public/private rsa key pair.</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt SSL证书ocsp域名无法访问解决办法</title>
+      <link>https://blog.zhaojq.top/tecs/ocsp%E5%9F%9F%E5%90%8D%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 15 May 2020 09:27:52 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/ocsp%E5%9F%9F%E5%90%8D%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E9%97%AE%E9%A2%98/</guid>
+      <description>不少公司会用Let&amp;rsquo;s Encrypt 免费ssl证书, 但由于国内无法访问其ocsp域名,会导致不能签发证书、OCSP Stapling 失败、ios内置H5页面及网页打开缓慢等问题
+针对这个问题,有以下两种解决办法:
+1.切换http,但当下https普及的情况下,不推荐
+2.购买SSL证书,可根据访问量及其他综合考虑购买对应证书
+3.本地修改hosts的方案进行临时处理,但不是长久方案,不稳定 在/etc/hosts中添加
+23.32.3.72 ocsp.int-x3.letsencrypt.org  获取ocsp响应
+openssl ocsp -no_nonce \ -respout /path/to/certs/holmesian.org/ocsp_res.der \ -issuer /path/to/certs/holmesian.org/ca.cer \ -cert /path/to/certs/holmesian.org/holmesian.org.cer \ -url http://ocsp.int-x3.letsencrypt.org/ \ -header &amp;quot;HOST&amp;quot; &amp;quot;ocsp.int-x3.letsencrypt.org&amp;quot; #-cert 、 -issuer 、 -CAfile 分别对应的是子证书、中间证书、根证书，其实全部使用 acme.sh 文件夹中的 fullchain.cer 也是可以的 #-respout 是 OCSP 响应保存位置，将这个位置填入在 nginx 配置文件的 ssl_stapling_file 中，如下开启ssl_stapling  这里如果出现如下错误的话，说明你的openssl使用了1.1.0版本，这个时候已经不需要指定HOST，把上面命令中的“-header &amp;ldquo;HOST&amp;rdquo; &amp;ldquo;ocsp.int-x3.letsencrypt.org&amp;rdquo;”删掉就好了
+ssl_stapling on; ssl_stapling_verify on; ssl_stapling_file /root/.acme.sh/*.holmesian.org_ecc/ocsp_res.der;  重载nginx服务后,检查是否开启
+openssl s_client -connect holmesian.org:443 -status -tlsextdebug &amp;lt; /dev/null 2&amp;gt;&amp;amp;1 | grep -i &amp;quot;OCSP response&amp;quot;  如果显示successful,则代表成功,可以将期制成脚本,加到crontab中自动执行</description>
+    </item>
+    
+    <item>
+      <title>redis作接口缓存及避坑</title>
+      <link>https://blog.zhaojq.top/tecs/redis%E5%BA%8F%E5%88%97%E5%8C%96%E9%81%BF%E5%9D%91/</link>
+      <pubDate>Fri, 15 May 2020 08:27:52 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/redis%E5%BA%8F%E5%88%97%E5%8C%96%E9%81%BF%E5%9D%91/</guid>
+      <description>用redis作接口缓存 1.引入依赖
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;spring-boot-starter-data-redis&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt;  2.application.yml里配置cache
+spring: redis: database: 0 host: 127.0.0.1 port: 8379 cache: type: redis expire: 1800 #超时时间,单位秒  3.启动类添加 @EnableCaching 注解开启缓存 4.自定义redis序列化机制
+import com.fasterxml.jackson.annotation.JsonTypeInfo; import com.fasterxml.jackson.databind.DeserializationFeature; import com.fasterxml.jackson.databind.ObjectMapper; import com.fasterxml.jackson.databind.SerializationFeature; import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator; import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule; import org.springframework.context.annotation.Bean; import org.springframework.context.annotation.Configuration; import org.springframework.context.annotation.Primary; import org.springframework.data.redis.connection.RedisConnectionFactory; import org.springframework.data.redis.core.RedisTemplate; import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer; import org.springframework.data.redis.serializer.RedisSerializer; import org.springframework.data.redis.serializer.StringRedisSerializer; @Configuration public class RedisConfig { /** * 自定义redis序列化的机制,重新定义一个ObjectMapper.防止和MVC的冲突 * * @return */ @Primary @Bean public RedisSerializer&amp;lt;Object&amp;gt; redisSerializer() { ObjectMapper objectMapper = new ObjectMapper(); //反序列化时候遇到不匹配的属性并不抛出异常 objectMapper.</description>
+    </item>
+    
+    <item>
+      <title>Mac安全的删文件</title>
+      <link>https://blog.zhaojq.top/tecs/mac%E5%AE%89%E5%85%A8%E7%9A%84%E5%88%A0%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Wed, 22 Apr 2020 10:04:17 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/mac%E5%AE%89%E5%85%A8%E7%9A%84%E5%88%A0%E6%96%87%E4%BB%B6/</guid>
+      <description>Mac 像Linux一样使用命令行是很便利的, 但是在使用命令行的时候, rm -rf 命令是很常用的.
+rm -rf 是一个可怕的命令, 可以理解为递归删除, 如果执行的是rm -rf /* ,那么你的系统会迅速的土崩瓦解, 尽管有些文件可能因为系统权限不足删不掉, 但是在文件丢失甚至系统不能使用的道路上,你成功了. 经常流传的程序员删库跑路, 即是执行了此命令.
+当然一个正常人是不会随便乱执行这个命令的, 但有时候, 常在河边走, 总有湿鞋时, 小心又小心, 还是会因为手抖执行错.
+我最近就遇到过一次, 我把mac的命令行模式切换成了 zsh, 我们知道,切换为zsh后(忘了原生的是不是), 个人文件夹的根路径就会变成 ~, 即如果执行 cd ~ 或 cd ~/ 都会跳转到个人目录.
+直到前几天, 我下载了一个开源权限框架做一个小东西,使用它的代码生成工具, 可能是因为路径设置问题, 在我的某个指定文件夹下, 竟然又生成了一个~的目录, 心想 rm -rf ~是相对路径删除,应该没事, 于是我痛快的按了enter键, 但是可怕的事发生了, 这个文件夹没有消失, 命令行列表显示我个人文件夹下的文件被清掉的记录, 迅速的按下control+c&amp;hellip;&amp;hellip;
+可以想象到的事发生了, 我是习惯把公司的代码, 个人代码及所有个人文件都放~目录下的人, 是的, 我的所有文件几乎全被删了, 值得庆幸的是执行的不是 rm -rf /*, 但尽管只是个人目录,带来的麻烦很大, 我长时间辛苦整理的资料, 文件等,全没了&amp;hellip;..
+还能怎么样, 就这样认了, 重新整理吧&amp;hellip;..
+但是如何继续避免这样的事再次发生呢, 我找到了如下解决方案
+ 安装rmtrash</description>
+    </item>
+    
+    <item>
+      <title>如何快速在linux成功安装nginx</title>
+      <link>https://blog.zhaojq.top/tecs/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%9C%A8linux%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85nginx/</link>
+      <pubDate>Fri, 17 Apr 2020 16:27:52 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%9C%A8linux%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85nginx/</guid>
+      <description>​ 安装nginx的教程很多,有时候跟着走着走着就走不通了, 这就像一千个读者就有一千个哈姆雷特一样,一千个人就有一千种系统环境,就有一千种步骤. 眼花缭乱的博客有时是不是很头疼,那就自己整理一份吧.
+​ 这篇文章我们不谈论很多参数的调优,如果不是大型系统的话,默认的配置,跑起来也毫无感觉. 本文我们仅谈如何快速成功在linux系统安装nginx,让你的ngin运行起来.以下即是安装步骤:
+安装nginx 一.安装编译工具及库文件 ​ 如果是新系统,则下面这些必须安装,如果不是,则你有可能安装过了,安装过了也无所谓,会覆盖;
+yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel  二.安装pcre 让nginx⽀持rewrite功能&amp;ndash;可以不安装 ​ rewrite功能一般也用不着,所以这个可以不安装
+1. cd /usr/local/src/ 2. wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre- 8.35.tar.gz #可去官网找最新稳定版 3. tar zxvf pcre-8.35.tar.gz 4. cd pcre-8.35 5. ./configure 6. make &amp;amp;&amp;amp; make install 7. pcre-config --version #显示版本即成功  三.安装nginx ​ 一般我们最好把nginx安装到/usr/local目录下,如果严格按照我的步骤不报错,那么恭喜安装成功了
+1. cd /usr/local/src 2. wget http://nginx.org/download/nginx-1.16.1.tar.gz --最新稳定版 3. tar zxvf nginx-1.16.1.tar.gz 4. cd nginx-1.</description>
+    </item>
+    
+    <item>
+      <title>如何使用Gitbook搭建个人文档</title>
+      <link>https://blog.zhaojq.top/tecs/gitbook/</link>
+      <pubDate>Wed, 27 Nov 2019 09:41:50 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/gitbook/</guid>
+      <description>GitBook的使用相较之下还是比较的简单,插件也相对丰富
+安装node.js(使用homebrew安装即可) node -v #v12.12.0  安装gitbook $ npm install gitbook-cli -g  检验安装 gitbook -V # CLI version: 2.3.2 # GitBook version: 3.2.3  创建目录 test-gitbook cd test-gitbook gitbook init # 可以看到多了README.md SUMMARY.md 两个文件  编辑summary.md # Summary * [前言](README.md) * [JAVA技术](Chapter1/README.md) * [GO技术](Chapter2/README.md) * [深入理解JVM](Chapter3/README.md) * [算法知识](Chapter4/README.md) * [SPRING系列](Chapter5/README.md) * [Spring](Chapter5/Spring.md) * [SpringBoot](Chapter5/SpringBoot.md) * [SpringCloud](Chapter5/SpringCloud.md) * [DOCKER](Chapter6/README.md) * [NETTY](Chapter7/README.md)  生成网页并启动gitbook gitbook serve # 通过http://localhost:4000即可访问  如图所示,就是我们刚创建的目录</description>
+    </item>
+    
+    <item>
+      <title>个性化个人博客网站</title>
+      <link>https://blog.zhaojq.top/tecs/hugo2/</link>
+      <pubDate>Thu, 07 Nov 2019 16:07:53 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/hugo2/</guid>
+      <description>GitHub Pages绑定到自己的域名  申请个人域名,完成备案,比如,我将我的二级域名 blog.zhaojq.top 添加一个CNAME解析到https://{username}.github.io 在GitHub账户工程 Settings/GitHub Pages /Custom domain处填写自己的域名信息 即可通过 https://blog.zhaojq.top 访问自己的个人博客  如何修改主题模板 常用的主题形式一般是固定死的,我们想添加一些模块等的时候,并不能达到我们想要的效果,那么如何来修改主题模板呢?
+以我个人使用的主题举例说明
+https://github.com/vaga/hugo-theme-m10c  配置文件配置 我们发现,基本每个主题下都有目录exampleSite或者其他处可以找到*.toml配置文件示例,我们只要参照此配置文件配置我们主目录下的config.toml文件即可
+增加模块 我发现这个主题只支持一个模块,即只有首页,这时我们就得查找Hugo官方文档,是英文的,凑合理解吧
+[menu] [[menu.main]] name = &amp;quot;首页&amp;quot; weight = 1 identifier = &amp;quot;首页&amp;quot; url = &amp;quot;/posts/&amp;quot; title = &amp;quot;首页&amp;quot; [[menu.main]] name = &amp;quot;技术&amp;quot; weight = 2 identifier = &amp;quot;技术&amp;quot; url = &amp;quot;/tecs/&amp;quot; title = &amp;quot;技术分享&amp;quot; [[menu.main]] name = &amp;quot;技术系列&amp;quot; weight = 3 identifier = &amp;quot;系列&amp;quot; url = &amp;quot;/books/&amp;quot; title = &amp;quot;技术系列&amp;quot; [[menu.</description>
+    </item>
+    
+    <item>
+      <title>如何用hugo搭建一个个人博客网站</title>
+      <link>https://blog.zhaojq.top/tecs/hugo1/</link>
+      <pubDate>Thu, 07 Nov 2019 15:43:59 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/hugo1/</guid>
+      <description>准备工作  安装homebrew(可参考mac常用配置文章)
+ 安装go环境(可通过homebrew安装)
+ Github账号(用来托管静态页面)
+  环境的安装 安装Hugo 安装hugo有两种方式,二进制安装和源代码模式,这里推荐使用二进制模式,直接通过homebrew即可安装
+brew install hugo  安装完成后通过以下命令查看
+brew list  如果有Hugo,即代表安装成功
+生成一个站点 cd ~/ # 进入到个人目录下 hugo new site test-blog # 生成一个名为test-blog的站点  如图进入test-blog目录,我们看到站点目录结构如下,我们只关注有注释的目录即可
+&amp;gt;archetypes &amp;gt;content #静态页面目录 &amp;gt;data &amp;gt;layouts &amp;gt;static #静态文件目录 &amp;gt;thems #主题目录 -config.toml#配置文件  创建页面 页面都必须生成在content目录下,如果有多个模块,可创建多个文件夹
+这里举例生成两个模块
+hugo new a/a.md hugo new b/b.md  如下:
+我设置a/a.md title为test-A,内容随便写 --- title: &amp;quot;test-A&amp;quot; date: 2019-11-26T17:48:47+08:00 draft: true --- * a * b * c .</description>
+    </item>
+    
+    <item>
+      <title>mac常用配置</title>
+      <link>https://blog.zhaojq.top/tecs/mac/</link>
+      <pubDate>Wed, 06 Nov 2019 00:08:17 +0800</pubDate>
+      
+      <guid>https://blog.zhaojq.top/tecs/mac/</guid>
+      <description>个人笔电的选择 如果你是一个java程序员,那么你肯定用过Eclipse 和 Intellij IDEA, Mac 之于Windows,就像idea之于eclipse, mac设计的美观性,系统的流畅度,环境的整洁,应用的管理,友好的操作&amp;hellip;..绝对会让你迷上它.
+如何配置一台适合开发使用的mac 这里我只介绍一些关键性配置
+触发角 在系统偏好设置/桌面与屏幕保护程序/屏幕保护程序 菜单下,会有触发角的设置,即鼠标快速移动到屏幕四个角,可以触发不同的操作,比如,关闭屏幕,调度中心,启动台,程序窗口等,可以快速的帮助你进行一系统方便的操作.
+zsh mac的终端是默认是bash,但zsh才是一个更加强大的命令行工具
+切换到bash: chsh -s /bin/bash  切换到zsh chsh -s /bin/zsh  Oh my zsh zsh具有强大的可定制的特点，支持许多插件,补全功能也强大很多.但是却配置起来十分的麻烦，但有了oh-my-zsh之后，一切变得简单起来了
+ 安装 oh my zsh  首先切换到zsh,以下命令由于是国外链接,有时会显示失败,多尝试或者切换网络再尝试
+$ sh -c &amp;quot;$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;quot;   配置主题
+vim ~/.zshrc   主题选择可以从这里选择,直接覆盖配置文件名字即可
+https://github.com/ohmyzsh/ohmyzsh/wiki/Themes  Homebrew Homebrew 可以理解为命令行应用管理软件,就像你能看得见的appStore一样,只不过它是通过命令行管理的
+ 安装homebrew,同oh my zsh一样,如果失败,切换网络或者多次尝试即可
+/usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  查找软件
+brew search ***   这时会有Formulae和Casks两种类型,Formulae是一些常用包,比如java,python,go等安装包, cask是软件</description>
+    </item>
+    
+  </channel>
+</rss>

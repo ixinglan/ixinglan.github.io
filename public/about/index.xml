@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>关于 on 古道长亭</title>
+    <link>https://blog.zhaojq.top/about/</link>
+    <description>Recent content in 关于 on 古道长亭</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 31 Oct 2019 19:35:26 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.zhaojq.top/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

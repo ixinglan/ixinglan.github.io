@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>如何用hugo搭建一个个人博客网站 // 古道长亭</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="zhaoxr" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://blog.zhaojq.top/css/main.min.9ca930c32c2e4c460588f0d531e2af8c91af1d68068590a99c17e454d2968c0f.css" />
+    <link rel="shortcut icon" href="shortcut.jpeg" />
+    <link rel="bookmark" href="bookmark.jpeg" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何用hugo搭建一个个人博客网站"/>
+<meta name="twitter:description" content="准备工作  安装homebrew(可参考mac常用配置文章)
+ 安装go环境(可通过homebrew安装)
+ Github账号(用来托管静态页面)
+  环境的安装 安装Hugo 安装hugo有两种方式,二进制安装和源代码模式,这里推荐使用二进制模式,直接通过homebrew即可安装
+brew install hugo  安装完成后通过以下命令查看
+brew list  如果有Hugo,即代表安装成功
+生成一个站点 cd ~/ # 进入到个人目录下 hugo new site test-blog # 生成一个名为test-blog的站点  如图进入test-blog目录,我们看到站点目录结构如下,我们只关注有注释的目录即可
+&gt;archetypes &gt;content #静态页面目录 &gt;data &gt;layouts &gt;static #静态文件目录 &gt;thems #主题目录 -config.toml#配置文件  创建页面 页面都必须生成在content目录下,如果有多个模块,可创建多个文件夹
+这里举例生成两个模块
+hugo new a/a.md hugo new b/b.md  如下:
+我设置a/a.md title为test-A,内容随便写 --- title: &quot;test-A&quot; date: 2019-11-26T17:48:47&#43;08:00 draft: true --- * a * b * c ."/>
+
+    <meta property="og:title" content="如何用hugo搭建一个个人博客网站" />
+<meta property="og:description" content="准备工作  安装homebrew(可参考mac常用配置文章)
+ 安装go环境(可通过homebrew安装)
+ Github账号(用来托管静态页面)
+  环境的安装 安装Hugo 安装hugo有两种方式,二进制安装和源代码模式,这里推荐使用二进制模式,直接通过homebrew即可安装
+brew install hugo  安装完成后通过以下命令查看
+brew list  如果有Hugo,即代表安装成功
+生成一个站点 cd ~/ # 进入到个人目录下 hugo new site test-blog # 生成一个名为test-blog的站点  如图进入test-blog目录,我们看到站点目录结构如下,我们只关注有注释的目录即可
+&gt;archetypes &gt;content #静态页面目录 &gt;data &gt;layouts &gt;static #静态文件目录 &gt;thems #主题目录 -config.toml#配置文件  创建页面 页面都必须生成在content目录下,如果有多个模块,可创建多个文件夹
+这里举例生成两个模块
+hugo new a/a.md hugo new b/b.md  如下:
+我设置a/a.md title为test-A,内容随便写 --- title: &quot;test-A&quot; date: 2019-11-26T17:48:47&#43;08:00 draft: true --- * a * b * c ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zhaojq.top/tecs/hugo1/" />
+<meta property="article:published_time" content="2019-11-07T15:43:59+08:00" />
+<meta property="article:modified_time" content="2019-11-07T15:43:59+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://blog.zhaojq.top"><img class="app-header-avatar" src="/avatar.png" alt="zhaoxr" /></a>
+      <h1>古道长亭</h1>
+      <p>The road through the summit is always difficult and lonely</p>
+      <div class="app-header-menus">
+        <nav class="sidebar-nav">
+				  
+				    <a href="/posts/" title="首页">首页</a>
+				  
+				    <a href="/tecs/" title="技术分享">技术</a>
+				  
+				    <a href="/books/" title="技术系列">系列</a>
+				  
+				    <a href="/free/" title="生活随笔">随笔</a>
+				  
+				    <a href="/about/" title="关于">关于</a>
+				  
+				</nav>
+      </div>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://me.csdn.net/qq_34581279" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-csdn">
+  <title>csdn</title>
+  <path d="M32.392,1.067 C32.118,3.080 31.876,4.863 31.571,7.111 C27.992,6.559 24.431,6.049 20.851,6.345 C17.574,6.616 14.398,7.235 12.079,9.747 C7.821,14.358 10.138,20.714 16.570,21.848 C20.574,22.555 24.627,22.174 28.643,21.624 C28.488,24.734 28.480,24.260 28.340,27.301 C28.310,27.966 28.462,27.705 23.753,28.183 C18.758,28.433 13.767,28.493 8.980,26.720 C4.444,25.041 0.872,22.370 0.148,17.436 C-0.597,12.358 1.533,8.258 5.612,5.096 C11.733,0.349 22.443,-1.321 32.392,1.067 Z"/>
+</svg></a>
+        
+          <a target="_blank" href="https://gitee.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-gitee">
+  <title>gitee</title>
+  <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">如何用hugo搭建一个个人博客网站</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Nov 7, 2019
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          1 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<h2 id="准备工作">准备工作</h2>
+
+<ul>
+<li><p>安装homebrew(可参考mac常用配置文章)</p></li>
+
+<li><p>安装go环境(可通过homebrew安装)</p></li>
+
+<li><p>Github账号(用来托管静态页面)</p></li>
+</ul>
+
+<h2 id="环境的安装">环境的安装</h2>
+
+<h3 id="安装hugo">安装Hugo</h3>
+
+<p>安装hugo有两种方式,二进制安装和源代码模式,这里推荐使用二进制模式,直接通过homebrew即可安装</p>
+
+<pre><code class="language-bash">brew install hugo
+</code></pre>
+
+<p>安装完成后通过以下命令查看</p>
+
+<pre><code class="language-shell">brew list 
+</code></pre>
+
+<p>如果有Hugo,即代表安装成功</p>
+
+<h3 id="生成一个站点">生成一个站点</h3>
+
+<pre><code class="language-bash">cd ~/  # 进入到个人目录下
+hugo new site test-blog  # 生成一个名为test-blog的站点
+</code></pre>
+
+<p><img src="/hugo/1.png" width="70%" height="10%" alt="" align=center></p>
+
+<p>如图进入test-blog目录,我们看到站点目录结构如下,我们只关注有注释的目录即可</p>
+
+<pre><code class="language-go">&gt;archetypes
+&gt;content    #静态页面目录
+&gt;data       
+&gt;layouts
+&gt;static     #静态文件目录
+&gt;thems      #主题目录
+-config.toml#配置文件
+</code></pre>
+
+<h3 id="创建页面">创建页面</h3>
+
+<p>页面都必须生成在content目录下,如果有多个模块,可创建多个文件夹</p>
+
+<p>这里举例生成两个模块</p>
+
+<pre><code class="language-bash">hugo new a/a.md
+hugo new b/b.md
+</code></pre>
+
+<p>如下:</p>
+
+<pre><code class="language-markdown"> 我设置a/a.md title为test-A,内容随便写
+---
+title: &quot;test-A&quot;
+date: 2019-11-26T17:48:47+08:00
+draft: true
+---
+* a
+* b
+* c
+................................................................
+我设置b/b.md title为test-B,内容随便写
+---
+title: &quot;test-B&quot;
+date: 2019-11-26T17:48:47+08:00
+draft: true
+---
+1. a
+2. b
+3. c
+</code></pre>
+
+<h3 id="安装主题">安装主题</h3>
+
+<pre><code class="language-http">https://themes.gohugo.io/ 选择一款自己喜欢的主题
+</code></pre>
+
+<pre><code class="language-bash">$ cd themes
+$ git clone https://github.com/spf13/hyde.git
+</code></pre>
+
+<h3 id="修改配置文件config-toml">修改配置文件config.toml</h3>
+
+<pre><code class="language-toml">baseURL = &quot;http://example.org/&quot;
+languageCode = &quot;zh-cn&quot;
+title = &quot;My New Hugo Site&quot;
+theme = &quot;hyde&quot;              #theme即为刚下载的主题名称
+</code></pre>
+
+<h3 id="测试运行">测试运行</h3>
+
+<pre><code class="language-bash">hugo server -D  
+# 启动本地测试,
+</code></pre>
+
+<p>如图所示,即代表成功</p>
+
+<p><img src="/hugo/2.png" width="60%" height="25%" alt="" align=center></p>
+
+<p><strong>我们可通过标示地址: *localhost:1313*进行本地预览</strong></p>
+
+<p>如下图即为运行结果</p>
+
+<p><img src="/hugo/3.png" width="60%" height="40%" alt="" align=center></p>
+
+<h3 id="编译">编译</h3>
+
+<p>hugo的编译相当快</p>
+
+<pre><code class="language-bash">hugo
+#执行hugo命令,会看到目录下多了 public 目录,此即为生成的静态页面
+</code></pre>
+
+<h3 id="发布">发布</h3>
+
+<p>我们用Github Pages 来托管我们的静态页面,在github账号创建一个{username}.github.io,括号内为你的github用户名称,修改配置文件config.toml的baseURL为如下:</p>
+
+<pre><code class="language-toml">baseURL = &quot;http://{username}.github.io&quot;
+</code></pre>
+
+<p>将public内容推送到该目录即可</p>
+
+<pre><code class="language-bash">git init
+git remote add origin https://github.com/{username}/{username}.github.io.git
+git add -A
+git commit -m &quot;my blog&quot;
+git push -u origin master
+</code></pre>
+
+<p>接下来,即可使用 http://{username}.github.io 地址来访问你的个人博客了~</p>
+
+<h3 id="强制使用https">强制使用https</h3>
+
+<p>在github工程   Settings/GitHub Pages,勾选Enforce HTTPS 选项,即可启用https访问</p>
+
+<blockquote>
+<p>ps:github的访问速度有些慢,国内的gitee pages也支持Hugo的托管,感兴趣的可以查看文档配置即可</p>
+</blockquote>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

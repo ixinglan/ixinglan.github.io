@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <title>如何快速在linux成功安装nginx // 古道长亭</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.58.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="zhaoxr" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://blog.zhaojq.top/css/main.min.9ca930c32c2e4c460588f0d531e2af8c91af1d68068590a99c17e454d2968c0f.css" />
+    <link rel="shortcut icon" href="shortcut.jpeg" />
+    <link rel="bookmark" href="bookmark.jpeg" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何快速在linux成功安装nginx"/>
+<meta name="twitter:description" content="​ 安装nginx的教程很多,有时候跟着走着走着就走不通了, 这就像一千个读者就有一千个哈姆雷特一样,一千个人就有一千种系统环境,就有一千种步骤. 眼花缭乱的博客有时是不是很头疼,那就自己整理一份吧.
+​ 这篇文章我们不谈论很多参数的调优,如果不是大型系统的话,默认的配置,跑起来也毫无感觉. 本文我们仅谈如何快速成功在linux系统安装nginx,让你的ngin运行起来.以下即是安装步骤:
+安装nginx 一.安装编译工具及库文件 ​ 如果是新系统,则下面这些必须安装,如果不是,则你有可能安装过了,安装过了也无所谓,会覆盖;
+yum -y install make zlib zlib-devel gcc-c&#43;&#43; libtool openssl openssl-devel  二.安装pcre 让nginx⽀持rewrite功能&ndash;可以不安装 ​ rewrite功能一般也用不着,所以这个可以不安装
+1. cd /usr/local/src/ 2. wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre- 8.35.tar.gz #可去官网找最新稳定版 3. tar zxvf pcre-8.35.tar.gz 4. cd pcre-8.35 5. ./configure 6. make &amp;&amp; make install 7. pcre-config --version #显示版本即成功  三.安装nginx ​ 一般我们最好把nginx安装到/usr/local目录下,如果严格按照我的步骤不报错,那么恭喜安装成功了
+1. cd /usr/local/src 2. wget http://nginx.org/download/nginx-1.16.1.tar.gz --最新稳定版 3. tar zxvf nginx-1.16.1.tar.gz 4. cd nginx-1."/>
+
+    <meta property="og:title" content="如何快速在linux成功安装nginx" />
+<meta property="og:description" content="​ 安装nginx的教程很多,有时候跟着走着走着就走不通了, 这就像一千个读者就有一千个哈姆雷特一样,一千个人就有一千种系统环境,就有一千种步骤. 眼花缭乱的博客有时是不是很头疼,那就自己整理一份吧.
+​ 这篇文章我们不谈论很多参数的调优,如果不是大型系统的话,默认的配置,跑起来也毫无感觉. 本文我们仅谈如何快速成功在linux系统安装nginx,让你的ngin运行起来.以下即是安装步骤:
+安装nginx 一.安装编译工具及库文件 ​ 如果是新系统,则下面这些必须安装,如果不是,则你有可能安装过了,安装过了也无所谓,会覆盖;
+yum -y install make zlib zlib-devel gcc-c&#43;&#43; libtool openssl openssl-devel  二.安装pcre 让nginx⽀持rewrite功能&ndash;可以不安装 ​ rewrite功能一般也用不着,所以这个可以不安装
+1. cd /usr/local/src/ 2. wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre- 8.35.tar.gz #可去官网找最新稳定版 3. tar zxvf pcre-8.35.tar.gz 4. cd pcre-8.35 5. ./configure 6. make &amp;&amp; make install 7. pcre-config --version #显示版本即成功  三.安装nginx ​ 一般我们最好把nginx安装到/usr/local目录下,如果严格按照我的步骤不报错,那么恭喜安装成功了
+1. cd /usr/local/src 2. wget http://nginx.org/download/nginx-1.16.1.tar.gz --最新稳定版 3. tar zxvf nginx-1.16.1.tar.gz 4. cd nginx-1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.zhaojq.top/tecs/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%9C%A8linux%E6%88%90%E5%8A%9F%E5%AE%89%E8%A3%85nginx/" />
+<meta property="article:published_time" content="2020-04-17T16:27:52+08:00" />
+<meta property="article:modified_time" content="2020-04-17T16:27:52+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://blog.zhaojq.top"><img class="app-header-avatar" src="/avatar.png" alt="zhaoxr" /></a>
+      <h1>古道长亭</h1>
+      <p>The road through the summit is always difficult and lonely</p>
+      <div class="app-header-menus">
+        <nav class="sidebar-nav">
+				  
+				    <a href="/posts/" title="首页">首页</a>
+				  
+				    <a href="/tecs/" title="技术分享">技术</a>
+				  
+				    <a href="/books/" title="技术系列">系列</a>
+				  
+				    <a href="/free/" title="生活随笔">随笔</a>
+				  
+				    <a href="/about/" title="关于">关于</a>
+				  
+				</nav>
+      </div>
+      <div class="app-header-social">
+        
+          <a target="_blank" href="https://github.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
+  <title>github</title>
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg></a>
+        
+          <a target="_blank" href="https://me.csdn.net/qq_34581279" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-csdn">
+  <title>csdn</title>
+  <path d="M32.392,1.067 C32.118,3.080 31.876,4.863 31.571,7.111 C27.992,6.559 24.431,6.049 20.851,6.345 C17.574,6.616 14.398,7.235 12.079,9.747 C7.821,14.358 10.138,20.714 16.570,21.848 C20.574,22.555 24.627,22.174 28.643,21.624 C28.488,24.734 28.480,24.260 28.340,27.301 C28.310,27.966 28.462,27.705 23.753,28.183 C18.758,28.433 13.767,28.493 8.980,26.720 C4.444,25.041 0.872,22.370 0.148,17.436 C-0.597,12.358 1.533,8.258 5.612,5.096 C11.733,0.349 22.443,-1.321 32.392,1.067 Z"/>
+</svg></a>
+        
+          <a target="_blank" href="https://gitee.com/ixinglan" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-gitee">
+  <title>gitee</title>
+  <path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z"></path>
+</svg></a>
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">如何快速在linux成功安装nginx</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 17, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      
+
+<p>​       安装nginx的教程很多,有时候跟着走着走着就走不通了, 这就像一千个读者就有一千个哈姆雷特一样,一千个人就有一千种系统环境,就有一千种步骤. 眼花缭乱的博客有时是不是很头疼,那就自己整理一份吧.</p>
+
+<p>​       这篇文章我们不谈论很多参数的调优,如果不是大型系统的话,默认的配置,跑起来也毫无感觉. 本文我们仅谈如何快速成功在linux系统安装nginx,让你的ngin运行起来.以下即是安装步骤:</p>
+
+<h2 id="安装nginx">安装nginx</h2>
+
+<h3 id="一-安装编译工具及库文件">一.安装编译工具及库文件</h3>
+
+<p>​       如果是新系统,则下面这些必须安装,如果不是,则你有可能安装过了,安装过了也无所谓,会覆盖;</p>
+
+<pre><code class="language-shell">yum -y install make zlib zlib-devel gcc-c++ libtool openssl openssl-devel
+</code></pre>
+
+<h3 id="二-安装pcre-让nginx-持rewrite功能-可以不安装">二.安装pcre 让nginx⽀持rewrite功能&ndash;可以不安装</h3>
+
+<p>​       rewrite功能一般也用不着,所以这个可以不安装</p>
+
+<pre><code class="language-shell">1. cd /usr/local/src/
+2. wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-
+8.35.tar.gz #可去官网找最新稳定版
+3. tar zxvf pcre-8.35.tar.gz
+4. cd pcre-8.35
+5. ./configure
+6. make &amp;&amp; make install
+7. pcre-config --version #显示版本即成功
+</code></pre>
+
+<h3 id="三-安装nginx">三.安装nginx</h3>
+
+<p>​       一般我们最好把nginx安装到/usr/local目录下,如果严格按照我的步骤不报错,那么恭喜安装成功了</p>
+
+<pre><code class="language-shell">1. cd /usr/local/src
+2. wget http://nginx.org/download/nginx-1.16.1.tar.gz --最新稳定版
+3. tar zxvf nginx-1.16.1.tar.gz
+4. cd nginx-1.16.1
+5. ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --
+with-http_ssl_module --with-pcre=/usr/local/src/pcre-8.35 
+#--with-http_stub_status_module 是https必须的,如果你以后可能用到https访问,这个最好带上,省得以后再次编译
+#--with-pcre=/usr/local/src/pcre-8.35 这个是rewrite,在第 二 步没有安装的话这个也就不要带上了
+6. make
+7. make install
+</code></pre>
+
+<h2 id="配置nginx">配置nginx</h2>
+
+<h3 id="一-切换到nginx目录">一. 切换到nginx目录</h3>
+
+<pre><code class="language-shell">cd /usr/local/nginx
+</code></pre>
+
+<h3 id="二-conf-nginx-conf-配置-件如下-志默认关闭-https-默认关闭">二. <strong>conf/nginx.conf &ndash;</strong>配置⽂件如下<strong>,</strong>⽇志默认关闭<strong>,https</strong>默认关闭</h3>
+
+<pre><code class="language-nginx">#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+worker_rlimit_nofile 65535;
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name  127.0.0.1;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+        gzip on;
+        gzip_min_length 1k;
+        gzip_comp_level 9;
+        gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+        gzip_vary on;
+        gzip_disable &quot;MSIE [1-6]\.&quot;;
+
+				root /usr/local/nginx/html
+
+      	#这个location是我的一个测试工程,可以定义自己的测试loation
+        #location ^~ /jeecg-boot {
+					#proxy_pass              http://127.0.0.1:8080/jeecg-boot/;
+					#proxy_set_header        Host 127.0.0.1;
+					#proxy_set_header        X-Real-IP $remote_addr;
+					#proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+				#}
+      
+        location / {
+          root   html;
+          index  index.html index.htm;
+      		#解决Router(mode: 'history')模式下，刷新路由地址不能找到页面的问题, vue项目时用	
+          #if (!-e $request_filename) {
+            #rewrite ^(.*)$ /index.html?s=$1 last;
+            #break;
+          #}
+        }
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+}
+</code></pre>
+
+<h3 id="三-测试启动">三. 测试启动</h3>
+
+<p>​       以下我用的是相对路径,需要先切换到安装目录/usr/local/nginx</p>
+
+<pre><code class="language-shell">1. sbin/nginx -t #测试启动,配置文件有问题时会报错,不影响nginx运行,建议先执行
+2. sbin/nginx #启动 有时会提示nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already inuse) 错误, 则通过步骤3进行解决
+3. netstat -ntlp #查看并杀掉占⽤的80端⼝, kill pid(进程号)
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
